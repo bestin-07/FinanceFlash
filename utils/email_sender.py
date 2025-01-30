@@ -14,12 +14,14 @@ def send_email(to_email, email_content):
     msg.attach(MIMEText(email_content, 'html'))
 
     try:
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=30)  # Use SMTP_SSL for SSL connection
+        # Use SMTP_SSL for SSL connection
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=30)
         server.starttls()
         try:
             server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         except smtplib.SMTPAuthenticationError:
-            print("Failed to authenticate with the SMTP server. Check your email address and password.")
+            print("Failed to authenticate with the SMTP server. "
+                  "Check your email address and password.")
             return
         server.sendmail(EMAIL_ADDRESS, to_email, msg.as_string())
         server.quit()

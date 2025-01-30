@@ -1,8 +1,12 @@
 import requests
 from config import FINHUB_API_KEY
 
+
 def fetch_news(category):
-    url = f'https://finnhub.io/api/v1/news?category={category}&token={FINHUB_API_KEY}'
+    url = (
+        f'https://finnhub.io/api/v1/news?category={category}&'
+        f'token={FINHUB_API_KEY}'
+    )
     response = requests.get(url)
 
     # Check the status code of the response
