@@ -20,6 +20,7 @@ def send_email_route():
     email_content = render_template('email_template.html', stock_news=news_items)
     try:
         send_email(email, email_content)
+        return render_template('success.html'), 400
     except (smtplib.SMTPException, TimeoutError, ConnectionRefusedError) as e:
         print(f"Failed to send email: {e}")
         return render_template('error.html'), 500
