@@ -56,14 +56,23 @@
         .form-container button:hover {
             background-color: #5a9bd4;
         }
+        .warning {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffcccb;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
     <header>
-        Finance Flash
+        FinanceFlash
     </header>
     <main>
-        <p>Finance Flash is your go-to platform for the latest stock news and updates. Stay informed with our real-time news feed and never miss an important update.</p>
+        <p>FinanceFlash is your go-to platform for the latest stock news and updates. Stay informed with our real-time news feed and never miss an important update.</p>
         <p>Use our email service to get the latest stock news delivered directly to your inbox. Simply provide your email address and select the type of news you want to receive!</p>
         <div class="form-container">
             <form action="/send_email" method="post">
@@ -73,9 +82,12 @@
                 <button type="submit" name="category" value="merger">Get Merger News</button>
             </form>
         </div>
+        <div class="warning">
+            <p><strong>Note:</strong> The information provided by FinanceFlash is for informational purposes only. Please do not use it as the sole basis for making trading decisions. Trading involves significant risks, including the risk of losing all of your investment. Always conduct your own research and consult with a professional financial advisor before making any trading decisions.</p>
+        </div>
     </main>
     <footer>
-        &copy; 2025 FinanceFlash. All rights reserved. | Bestin. 
+        &copy; 2025 FinanceFlash. All rights reserved. | Bestin
     </footer>
 </body>
 </html>
