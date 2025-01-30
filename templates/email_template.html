@@ -35,6 +35,21 @@
             text-align: center;
             padding: 10px;
         }
+        .news-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-title {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .news-description {
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -45,12 +60,15 @@
         <div class="content">
             <p>Dear Subscriber,</p>
             <p>Here are the latest stock news updates:</p>
-            <ul>
+            <div>
                 <!-- Loop through stock news items and display them here -->
                 {% for news in stock_news %}
-                <li>{{ news }}</li>
+                <div class="news-item">
+                    <div class="news-title">{{ news.title }}</div>
+                    <div class="news-description">{{ news.description }}</div>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
             <p>Stay informed and make smart investment decisions!</p>
         </div>
         <div class="footer">
