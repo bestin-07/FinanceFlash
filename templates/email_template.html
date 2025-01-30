@@ -6,7 +6,7 @@
     <title>Stock News Update</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9f9f9;
             color: #333;
             margin: 0;
@@ -25,6 +25,7 @@
             color: white;
             padding: 10px;
             text-align: center;
+            font-size: 1.5rem;
         }
         .content {
             padding: 20px;
@@ -34,6 +35,7 @@
             color: white;
             text-align: center;
             padding: 10px;
+            font-size: 0.9rem;
         }
         .news-item {
             margin-bottom: 15px;
@@ -50,12 +52,24 @@
         .news-description {
             margin-top: 5px;
         }
+        .news-url {
+            margin-top: 5px;
+        }
+        .news-source {
+            font-style: italic;
+            margin-top: 5px;
+        }
+        .news-date {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Stock News Update</h1>
+            Stock News Update
         </div>
         <div class="content">
             <p>Dear Subscriber,</p>
@@ -64,15 +78,17 @@
                 <!-- Loop through stock news items and display them here -->
                 {% for news in stock_news %}
                 <div class="news-item">
-                    <div class="news-title">{{ news.title }}</div>
+                    <div class="news-title"><a href="{{ news.url }}" target="_blank">{{ news.title }}</a></div>
                     <div class="news-description">{{ news.description }}</div>
+                    <div class="news-source">Source: {{ news.source }}</div>
+                    <div class="news-date">Published at: {{ news.published_at }}</div>
                 </div>
                 {% endfor %}
             </div>
             <p>Stay informed and make smart investment decisions!</p>
         </div>
         <div class="footer">
-            <p>&copy; 2023 FinanceFlash. All rights reserved.</p>
+            &copy; 2025 Finance Flash. All rights reserved. Finace Flash is not responsible for the content above.
         </div>
     </div>
 </body>

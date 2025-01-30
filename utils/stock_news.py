@@ -1,8 +1,8 @@
 import requests
 from config import FINHUB_API_KEY
 
-def fetch_stock_news():
-    url = f'https://finnhub.io/api/v1/news?category=general&token={FINHUB_API_KEY}'
+def fetch_news(category):
+    url = f'https://finnhub.io/api/v1/news?category={category}&token={FINHUB_API_KEY}'
     response = requests.get(url)
 
     # Check the status code of the response
@@ -12,11 +12,8 @@ def fetch_stock_news():
 
     news_data = response.json()
 
-    # Print the entire JSON response for debugging
-    print("JSON Response:", news_data)
-
     # Extract relevant information from the JSON response
-    stock_news = []
+    news_items = []
     for item in news_data:
         news_item = {
             'title': item.get('headline', 'No title'),
@@ -25,7 +22,7 @@ def fetch_stock_news():
             'source': item.get('source', 'Unknown source'),
             'published_at': item.get('datetime', 'Unknown date')
         }
-        stock_news.append(news_item)
+        news_items.append(news_item)
         print("News Item:", news_item)
 
-    return stock_news
+    return news_items

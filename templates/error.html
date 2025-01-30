@@ -6,7 +6,7 @@
     <title>Email Sending Failed</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8d7da;
             color: #721c24;
             margin: 0;
@@ -25,12 +25,29 @@
         .container h1 {
             color: #721c24;
         }
+        .back-button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .back-button:hover {
+            background-color: #5a9bd4;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Email Sending Failed</h1>
         <p>There was an error sending your stock news email. Please try again later.</p>
+        <button class="back-button" onclick="window.location.href='/'">Back to Home</button>
     </div>
+    <footer>
+        &copy; 2025 FinanceFlash. All rights reserved. | Bestin.
+    </footer>
 </body>
 </html>
