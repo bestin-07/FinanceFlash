@@ -16,8 +16,11 @@ def send_email_route():
         return render_template('error.html'), 400
 
     stock_news = fetch_stock_news()
-    email_content = render_template('email_template.html', stock_news=stock_news)
-    print(email_content)
+    return render_template('email_template.html', stock_news=stock_news)
+    
+    #email_content = render_template('email_template.html', stock_news=stock_news)
+
+    '''
     try:
         send_email(email, email_content)
     except (smtplib.SMTPException, TimeoutError, ConnectionRefusedError) as e:
@@ -25,6 +28,7 @@ def send_email_route():
         return render_template('error.html'), 500
     else:
         return render_template('success.html')
+    '''
 
 if __name__ == '__main__':
     app.run(debug=True)
