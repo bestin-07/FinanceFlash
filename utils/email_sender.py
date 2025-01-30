@@ -14,7 +14,7 @@ def send_email(to_email, email_content):
     msg.attach(MIMEText(email_content, 'html'))
 
     try:
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=30)  # Increase timeout to 30 seconds
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=30)  # Use SMTP_SSL for SSL connection
         server.starttls()
         try:
             server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
