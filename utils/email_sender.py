@@ -1,17 +1,28 @@
+from config import EMAIL_ADDRESS, EMAIL_PASSWORD, SMTP_SERVER, SMTP_PORT
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from config import EMAIL_ADDRESS, EMAIL_PASSWORD, SMTP_SERVER, SMTP_PORT
 
 
-def send_email(to_email, content):
+def send_email(to_email, email_content):
+
     msg = MIMEMultipart()
     msg['From'] = EMAIL_ADDRESS
     msg['To'] = to_email
-    msg['Subject'] = 'Stock Market News'
-    msg.attach(MIMEText(content, 'html'))
+    msg['Subject'] = "Stock News Update"
 
-    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
+    msg.attach(MIMEText(email_content, 'html'))
+
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=30)  # Increase timeout to 30 seconds
         server.starttls()
-        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-        server.send_message(msg)
+        try:
+            server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        except smtplib.SMTPAuthenticationError:
+            print("Failed to authenticate with the SMTP server. Check your email address and password.")
+            return
+        server.sendmail(EMAIL_ADDRESS, to_email, msg.as_string())
+        server.quit()
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
