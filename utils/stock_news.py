@@ -27,6 +27,5 @@ def fetch_news(category):
             'published_at': item.get('datetime', 'Unknown date')
         }
         news_items.append(news_item)
-        print("News Item:", news_item)
 
     return news_items
