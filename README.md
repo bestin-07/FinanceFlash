@@ -1,6 +1,7 @@
 # FinanceFlash
 
 FinanceFlash is a Python server that fetches the latest stock market news and sends email updates. It uses Flask for the server, smtplib for sending emails, and requests for fetching news.
+Since I use open souce servers, the functionality could be no efficient.
 
 ## Features
 - Python Flask server to handle requests
