@@ -41,4 +41,4 @@ FinanceFlash is a Python server that fetches the latest stock market news and se
 - [Finnhub API](https://finnhub.io/docs/api) for fetching stock market news
 
 ## Project Website
-- [FinanceFlash](http://www.financeflash.pythonanywhere.com)
+- [FinanceFlash](https://financeflash.pythonanywhere.com/)
