@@ -171,3 +171,4 @@ cython_debug/
 .pypirc
 
 config.py
+stock_analysis/stock_model.pkl
