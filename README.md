@@ -22,7 +22,7 @@ FinanceFlash is a Python server that fetches the latest stock market news and se
     ```
 
 3. **Configure API keys and email credentials**:
-    - Set up your API keys and email credentials in the [config.py](http://_vscodecontentref_/2) file:
+    - Set up your API keys and email credentials in the [config.py] file:
     ```python
     # config.py
     FINHUB_API_KEY = 'your_finnhub_api_key'
@@ -41,7 +41,7 @@ FinanceFlash is a Python server that fetches the latest stock market news and se
 
 ## Usage
 - Send a POST request to `/send_email` with the recipient's email address and the category of news (e.g., `general` or `merger`).
-- Send a POST request to `/predict_confidence` with the stock symbol to get the probability of the stock price going up by more than 5%.
+- Send a POST request to `/predict_confidence` with the stock symbol to get the probability of the stock price going up by more than 2%.
 
 ## Dependencies
 - Flask
