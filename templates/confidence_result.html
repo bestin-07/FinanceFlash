@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Confidence Score</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #4682b4;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .bar-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 25px;
+            margin: 20px 0;
+        }
+        .bar {
+            width: {{ prediction[0] * 100 }}%;
+            height: 30px;
+            background-color: #4682b4;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4682b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #5a9bd4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Confidence Score for 2% increase</h1>
+        <p>Predicted Price Increase Probability: {{ prediction[0] * 100 }}%</p>
+        <div class="bar-container">
+            <div class="bar">{{ prediction[0] * 100 }}%</div>
+        </div>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>

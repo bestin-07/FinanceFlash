@@ -35,17 +35,20 @@
         }
         .banner {
             width: 100%;
-            max-height: 400px;
-            overflow: scroll;
+            max-height: 200px;
+            overflow: hidden;
         }
         .banner img {
             width: 100%;
-            height: 50%;
+            height: auto;
         }
         .form-container {
             margin-top: 2rem;
+            position: relative;
+            display: inline-block;
         }
-        .form-container input[type="email"] {
+        .form-container input[type="email"],
+        .form-container input[type="text"] {
             padding: 0.5rem;
             font-size: 1rem;
             width: 300px;
@@ -75,7 +78,58 @@
             border-radius: 5px;
             font-size: 0.9rem;
         }
+        .suggestions {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: white;
+            position: absolute;
+            width: 300px;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+        }
+        .suggestion-item {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
     </style>
+    <script>
+        async function fetchSuggestions(query) {
+            const response = await fetch(`/symbol_suggestions?query=${query}`);
+            const suggestions = await response.json();
+            return suggestions;
+        }
+
+        function showSuggestions(suggestions) {
+            const suggestionsContainer = document.getElementById('suggestions');
+            suggestionsContainer.innerHTML = '';
+            suggestions.forEach(suggestion => {
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.textContent = suggestion;
+                item.onclick = () => {
+                    document.getElementById('stock_symbol').value = suggestion;
+                    suggestionsContainer.innerHTML = '';
+                };
+                suggestionsContainer.appendChild(item);
+            });
+        }
+
+        async function handleInput(event) {
+            const query = event.target.value;
+            if (query.length > 1) {
+                const suggestions = await fetchSuggestions(query);
+                showSuggestions(suggestions);
+            } else {
+                document.getElementById('suggestions').innerHTML = '';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -87,6 +141,14 @@
     <main>
         <p>FinanceFlash is your go-to platform for the latest stock news and updates. Stay informed with our real-time news feed and never miss an important update.</p>
         <p>Use our email service to get the latest stock news delivered directly to your inbox. Simply provide your email address and select the type of news you want to receive!</p>
+        <div class="form-container">
+            <form action="/predict_confidence" method="post">
+                <input type="text" id="stock_symbol" name="stock_symbol" placeholder="Enter stock symbol" oninput="handleInput(event)" required>
+                <div id="suggestions" class="suggestions"></div>
+                <br>
+                <button type="submit">Predict Confidence</button>
+            </form>
+        </div>
         <div class="form-container">
             <form action="/send_email" method="post">
                 <input type="email" name="email" placeholder="Enter your email" required>
@@ -100,7 +162,7 @@
         </div>
     </main>
     <footer>
-        &copy; 2025 FinanceFlash. All rights reserved. | Bestin
+        &copy; 2023 FinanceFlash. All rights reserved. | Developed by Bestin
     </footer>
 </body>
 </html>
