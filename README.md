@@ -7,7 +7,7 @@ FinanceFlash is a Python server that fetches the latest stock market news and se
 - Fetches stock market news via the Finnhub API
 - Sends email updates with the latest news
 - Predicts the probability of stock price going up by more than 2% using machine learning
-- Real-time stock data using WebSocket
+- Real-time stock data using free available API
 
 ## Setup Instructions
 1. **Clone the repository**:
