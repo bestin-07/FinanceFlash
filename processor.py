@@ -32,8 +32,7 @@ def predict_confidence_percentage(symbol):
         'low': [latest_data['l']],
         'close': [latest_data['c']],
     })
-    modelpath = 'stock_analysis/stock_model.pkl'
 
     # Predict the probability of stock price going up more than 5%
-    prediction_prob = predict(modelpath, input_data)
+    prediction_prob = predict(input_data)
     return prediction_prob
